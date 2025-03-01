@@ -13,6 +13,16 @@ import {
 import UserIcon from "./UserIcon";
 import { Button } from "../ui/button";
 import { links } from "@/utils/Links";
+import {
+  SignedIn,
+  SignedOut,
+  SignIn,
+  SignInButton,
+  SignOutButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/clerk-react";
+import SignOutLink from "./SignOutLink";
 
 const DropdownListMenu = () => {
   return (
@@ -35,6 +45,29 @@ const DropdownListMenu = () => {
             </DropdownMenuItem>
           );
         })}
+        <DropdownMenuSeparator />
+        <SignedOut>
+          <DropdownMenuItem >
+            <SignInButton mode="modal">
+              <button>Login</button>
+            </SignInButton>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem>
+            <SignUpButton mode="modal">
+              <button>Register</button>
+            </SignUpButton>
+          </DropdownMenuItem>
+        </SignedOut>
+
+        <SignedIn>
+          <DropdownMenuItem>
+            {/* <UserButton/>
+            <SignOutButton /> */}
+            <SignOutLink/>
+          </DropdownMenuItem>
+        </SignedIn>
+
       </DropdownMenuContent>
     </DropdownMenu>
   );
