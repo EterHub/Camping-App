@@ -4,10 +4,10 @@ import { Outlet } from "react-router";
 
 const Layout = () => {
   return (
-    <div>
+    <main className="container">
       <Navbar />
       <Outlet />
-    </div>
+    </main >
   );
 };
 

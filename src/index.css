@@ -121,3 +121,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components{
+  .container{
+    @apply px-8 mx-auto
+  }
+}
