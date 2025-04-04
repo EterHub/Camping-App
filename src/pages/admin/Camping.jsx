@@ -1,17 +1,22 @@
 import FormInputs from "@/components/form/FormInputs";
 import TextAreaInput from "@/components/form/TextAreaInput";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { campingSchema } from "@/utils/schemas";
 
 const Camping = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState } = useForm({
+    resolver: zodResolver(campingSchema),
+  });
+  const { errors } = formState;
+  console.log("this is errors", errors);
 
-  const onSubmit = (data)=>{
-    console.log("this is data ",data)
-  }
+  const onSubmit = (data) => {
+    console.log("this is data ", data);
+  };
 
   return (
     <section>
@@ -24,18 +29,21 @@ const Camping = () => {
               name="title"
               type="text"
               placeholder="title..."
+              errors={errors}
             />
             <FormInputs
               register={register}
               name="price"
               type="number"
               placeholder="Input Your Price"
+              errors={errors}
             />
             <TextAreaInput
               register={register}
               name="description"
               type="texxt"
               placeholder="Input your description"
+              errors={errors}
             />
           </div>
           <div className="flex justify-center">
